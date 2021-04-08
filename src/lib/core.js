@@ -4272,7 +4272,10 @@ export default function (context, pluginCallButtons, plugins, lang, options, _re
          * @private
          */
         _setCodeDataToEditor: function () {
-            const code_html = this._getCodeView();
+            let code_html = this._getCodeView();
+
+            if (typeof functions.beforeToggleCodeView === 'function') 
+                code_html = functions.beforeToggleCodeView(this._variable.isCodeView, this, code_html) || '';
 
             if (options.fullPage) {
                 const parseDocument = this._parser.parseFromString(code_html, 'text/html');
@@ -4309,7 +4312,11 @@ export default function (context, pluginCallButtons, plugins, lang, options, _re
          * @private
          */
         _setEditorDataToCodeView: function () {
-            const codeContents = this.convertHTMLForCodeView(context.element.wysiwyg);
+            let codeContents = this.convertHTMLForCodeView(context.element.wysiwyg);
+
+            if (typeof functions.beforeToggleCodeView === 'function') 
+                codeContents = functions.beforeToggleCodeView(this._variable.isCodeView, this, codeContents) || '';
+
             let codeValue = '';
 
             if (options.fullPage) {
@@ -7283,6 +7290,15 @@ export default function (context, pluginCallButtons, plugins, lang, options, _re
          * @param {Object} core Core object
          */
         toggleCodeView: null,
+
+        /**
+         * @description An event when toggling between code view and wysiwyg view.
+         * @param {Boolean} isCodeView Whether the next state is the code view mode
+         * @param {Object} core Core object
+         * @param {String} contents The contents to be displayed by either the code view or the editor.
+         * @returns {String} A string which will be used instead of contents.
+         */
+        beforeToggleCodeView: null,
 
         /**
          * @description An event when toggling full screen.

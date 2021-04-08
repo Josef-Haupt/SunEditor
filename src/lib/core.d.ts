@@ -708,6 +708,15 @@ export default class SunEditor {
 
     /**
      * @description An event when toggling between code view and wysiwyg view.
+     * @param isCodeView Whether the current state is the code view mode
+     * @param core Core object
+     * @param contents The contents to be displayed by either the code view or the editor.
+     * @returns A string which will be used instead of contents.
+     */
+    beforeToggleCodeView: (isCodeView: boolean, core: Core, contents: string) => string;
+
+    /**
+     * @description An event when toggling between code view and wysiwyg view.
      * @param isCodeView Whether the current code view mode
      * @param core Core object
      */
