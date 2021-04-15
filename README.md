@@ -435,6 +435,9 @@ iframeCSSFileName : Name or Array of the CSS file to apply inside the iframe.
 previewTemplate : A template of the "preview".
                   The {{contents}} part in the HTML string is replaced with the contents of the editor. default: null {String}
                   ex) "<div style='width:auto; max-width:1080px; margin:auto;'><h1>Preview Template</h1> {{contents}} <div>_Footer_</div></div>"
+printTemplate   : A template of the "print".
+                  The {{contents}} part in the HTML string is replaced with the contents of the editor. default: null {String}
+                  ex) "<div style='width:auto; max-width:1080px; margin:auto;'><h1>Print Template</h1> {{contents}} <div>_Footer_</div></div>"
 codeMirror      : If you put the CodeMirror object as an option, you can do Codeview using CodeMirror. default: null {Object}
                   Use version 5.x.x // https://github.com/codemirror/CodeMirror
                   ex) codeMirror: CodeMirror // Default option
@@ -506,6 +509,7 @@ maxHeight       : The max-height size of the editor.
 // Editing area default style------------------------------------------------------------------------------------
 defaultStyle    : You can define the style of the edit area. (className: 'sun-editor-editable')
                   It affects the entire editing area.               default: '' {String}
+                  ('z-index', 'position' and 'width' properties apply to the top div.)
                   ex) 'font-family: cursive; font-size: 10px;'
 
 // Defining menu items-------------------------------------------------------------------------------------------
