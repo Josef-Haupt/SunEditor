@@ -6,8 +6,7 @@
     "allowJs": true,
     "emitDeclarationOnly": true,
     "checkJs": true,
-    "declaration": true,
-    "strict": false
+    "declaration": true
   },
   "exclude": [
     "node_modules",
